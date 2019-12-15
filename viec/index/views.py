@@ -8,4 +8,4 @@ class IndexViewSet(viewsets.ViewSet):
     renderer_classes = (JSONRenderer,TemplateHTMLRenderer)
 
     def get(self, request, *args, **kwargs):
-        return Response(data={}, status=status.HTTP_200_OK, template_name='index/login.html')
+        return Response(data={}, status=status.HTTP_200_OK, template_name='leads/register-lead.html')
