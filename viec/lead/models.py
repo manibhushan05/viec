@@ -35,4 +35,3 @@ class Lead(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     deleted = models.BooleanField(default=False)
-    deleted_by = models.ForeignKey(User, null=True, on_delete=models.CASCADE, related_name='leads_deleted_by')
