@@ -1,0 +1,968 @@
+{% extends "student/base.html" %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'vendors/select2/css/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendors/nprogress/css/smart_wizard.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendors/nprogress/css/smart_wizard_theme_arrows.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendors/checkbox/css/checkbox.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendors/dropzone/css/dropzone.min.css' %}">
+
+{% endblock %}
+{% block pageTitle %}
+    <h3 class="titleTop">Register Student</h3>
+{% endblock %}
+{% block content %}
+    <!-- page content -->
+<div class="right_col" role="main">
+      <div class="">
+        <!-- Page Title -->
+        <div class="page-title">
+          <div class="title_right text-right">
+            <h3> <b>Student Registration Form</b> </h3>
+          </div>
+        </div>
+        <!-- End PageTitle -->
+        <div class="clearfix"></div>
+
+                <!-- SmartWizard 1 html -->
+                <div id="smartwizard">
+                    <ul>
+                        <li><a href="#step-1">Step 1<br /><small>General Information</small></a></li>
+                        <li><a href="#step-2">Step 2<br /><small>Institution Attended</small></a></li>
+                        <li><a href="#step-3">Step 3<br /><small>Additonal Qualifications</small></a></li>
+                        <li><a href="#step-4">Step 4<br /><small>Background Information</small></a></li>
+                        <li><a href="#step-5">Step 5<br/><small>Upload Documents</small></a></li>
+                    </ul>
+<div>
+
+<!-- General Information Start -->
+<div class="row" id="step-1" >
+  <div class="x_panel rounded" style="border: 0">
+    <h3> Personal Information </h3>
+    <h2> (As Indicated as on your passport) </h2>
+    <div class="x_content">
+      <br />
+      <form class="form-label-left input_mask">
+
+        <div class='col-sm-4'>
+          <h2>First Name <span class='text-danger'>*</span></h2>
+          <div class=" form-group">
+            <input type="text" class="form-control" id="student_first_name" name="first_name" required='required' placeholder="Enter First Name">
+          </div>
+        </div>
+        <div class='col-sm-4'>
+          <h2>Middle Name </h2>
+          <div class=" form-group">
+            <input type="text" class="form-control" id="student_middle_name" name="middle_name" placeholder="Enter Middle Name">
+          </div>
+        </div>
+        <div class='col-sm-4'>
+          <h2>Last Name </h2>
+          <div class=" form-group">
+            <input type="text" class="form-control" id="student_last_name" name="last_name"  placeholder="Enter Last Name">
+          </div>
+        </div>
+        <!---------------------------------------------------------------------------------------------- -->
+        <div class='col-sm-4'>
+          <h2>Date of Birth <span class='text-danger'>*</span></h2>
+          <div class="form-group">
+            <div class='input-group date student_datepicker'  data-date-format="dd-mm-yyyy">
+              <input type="text"  class="form-control" id="student_dob" name="dob"  placeholder="Enter Date..." />
+              <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class='col-sm-4'>
+          <h2>First Languague </h2>
+          <div class=" form-group">
+            <input type="text" class="form-control" id="student_first_language" name="first_language" placeholder="Enter First Language..">
+          </div>
+        </div>
+        <div class='col-sm-4'>
+          <h2>Country of Citizenship <span class='text-danger'>*</span></h2>
+          <div class=" form-group">
+            <select id="country2" name="citizenship_country" class="form-control" required>
+            </select>
+          </div>
+        </div>
+        <!---------------------------------------------------------------------------------------------- -->
+        <div class='col-sm-4'>
+          <h2>Passport Number <i class="fa fa-exclamation-circle"></i> <span class='text-danger'>*</span></h2>
+          <div class=" form-group">
+            <input type="text" class="form-control" id="student_passport_number" name="passport_number" required='required' placeholder="Enter Passport Number">
+          </div>
+        </div>
+        <div class='col-sm-4'>
+          <h2>Gender<span class='text-danger'>*</span> </h2>
+          <div class=" form-group">
+            <input type="radio"  name="gender" id="genderM" value="M" checked="" required /> Male &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input type="radio"  name="gender" id="genderF" value="F" /> Female
+          </div>
+        </div>
+        <div class='col-sm-4'>
+          <h2>Marital Status <i class="fa fa-exclamation-circle"></i> <span class='text-danger'>*</span> </h2>
+          <div class=" form-group">
+            <input type="radio" class="flat" name="marital_status" id="student_single" value="M" checked="" required /> Single &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input type="radio" class="flat" name="marital_status" id="student_married" value="F" /> Married
+          </div>
+        </div>
+        <!---------------------------------------------------------------------------------------------- -->
+        <div class="x_content">
+          <h3> Address Detail </h3>
+
+          <div class='col-sm-8'>
+            <h2>Address <span class='text-danger'>*</span></h2>
+            <div class=" form-group">
+              <input type="text" class="form-control" id="student_address" name="address" required='required' placeholder="Enter Address">
+            </div>
+          </div>
+
+          <div class='col-sm-4'>
+            <h2>City/Town <span class='text-danger'>*</span></h2>
+            <div class=" form-group">
+              <input type="text" class="form-control" id="student_City" name="city" required='required' placeholder="Enter City/Town">
+            </div>
+          </div>
+
+          <div class='col-sm-4'>
+            <h2>Country <span class='text-danger'>*</span></h2>
+            <div class=" form-group">
+              <select id="country" name ="country" class="select2_group form-control"  requried></select>
+            </div>
+          </div>
+          <div class='col-sm-4'>
+            <h2>Province/State</h2>
+            <div class=" form-group">
+              <select id="state" name ="state" class="select2_group form-control" required ></select>
+            </div>
+          </div>
+          <div class='col-sm-4'>
+            <h2>Postal/Zip Code</h2>
+            <div class=" form-group">
+              <input type="text" class="form-control" id="student_address_postal" name="postal"  placeholder="Enter Postal/Zip Code">
+            </div>
+          </div>
+
+          <div class='col-sm-4'>
+            <h2>Email<span class='text-danger'>*</span></h2>
+            <div class=" form-group">
+              <input type="text" class="form-control" id="student_email" name="email" required='required' placeholder="Enter Email...">
+            </div>
+          </div>
+          <div class='col-sm-4'>
+            <h2>Phone <span class='text-danger'>*</span></h2>
+            <div class=" form-group">
+              <input type="text" class="form-control" id="student_phone" name="phone" required='required' placeholder="Enter Phone...">
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+<!-- General Information End -->
+
+<!-- Education Summary Start -->
+<div class="row" id="step-2">
+  <div class="x_panel rounded" style="border: 0">
+    <h3> Institutions Attended </h3>
+    <form class="form-label-left input_mask">
+      <div class="copy hide">
+        <div class="control-group input-group">
+          <div class='col-sm-4'>
+            <h2>Level of Education <span class='text-danger'>*</span> </h2>
+            <div class=" form-group">
+              <select id="student_level_education" name="level_education" class="select2_group form-control" placeholder="" required>
+                <option>Select Level of Education...</option>
+                <optgroup label="Primary">
+                  <option value='1'>Grade 1 </option>
+                  <option value='2'>Grade 2 </option>
+                  <option value='3'>Grade 3 </option>
+                  <option value='4'>Grade 4 </option>
+                  <option value='5'>Grade 5 </option>
+                  <option value='6'>Grade 6 </option>
+                </optgroup>
+                <optgroup label="Secondary">
+                  <option value='7'>Grade 7 </option>
+                  <option value='8'>Grade 8 </option>
+                  <option value='9'>Grade 9 </option>
+                  <option value='10'>Grade 10 </option>
+                  <option value='11'>Grade 11 </option>
+                  <option value='12'>Grade 12/High School </option>
+                </optgroup>
+                <optgroup label="Under-Graduate">
+                  <option value='13'>1-Year Post Secondary Certificate </option>
+                  <option value='14'>2-Year UnderGraduate Diploma </option>
+                  <option value='15'>3-Year Advance UnderGraduate Diploma </option>
+                  <option value='16'>3-Year Bachelor's Degree</option>
+                  <option value='16'>4-Year Bachelor's Degree</option>
+                </optgroup>
+                <optgroup label="Post-Graduate">
+                  <option value='17'>Post Graduate Certificate/Diploma</option>
+                  <option value='18'>Master's Degree</option>
+                  <option value='19'>Doctoral Degree (Phd,MD..) </option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+          <div class='col-sm-4'>
+            <h2>Country of Education <span class='text-danger'>*</span></h2>
+            <div class=" form-group">
+              <select id="country3" name="country" class="form-control" required>
+              </select>
+            </div>
+          </div>
+          <div class='col-sm-4'>
+            <h2>Name of Institution </h2>
+            <div class=" form-group">
+              <input type="text" class="form-control" id="student_name_institution" name="name_institution" placeholder="Enter Name of Institution...">
+            </div>
+          </div>
+          <div class='col-sm-4'>
+            <h2>Medium of Instruction </h2>
+            <div class=" form-group">
+              <select id="student_medium_instruction" name="medium_instruction" class="select2_group form-control" placeholder="" required>
+                <option>Select Language</option>
+                <option value="en">English </option>
+                <option value="hn">Hindi </option>
+                <option value="pn">Punjabi </option>
+                <option value="oth">Other </option>
+              </select>
+            </div>
+          </div>
+          <div class='col-sm-4'>
+            <h2>Attended Institution From<span class='text-danger'>*</span></h2>
+            <div class="form-group">
+              <div class='input-group date student_datepicker'  data-date-format="dd-mm-yyyy">
+                <input type="text" id="student_attended_institution_from" name="attended_institution_from" class="form-control"  placeholder="Enter Date..." />
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class='col-sm-4'>
+            <h2>Attended Institution To<span class='text-danger'>*</span></h2>
+            <div class="form-group">
+              <div class="input-group date student_datepicker"  data-date-format="dd-mm-yyyy">
+                <input type="text"  class="form-control input-sm" id="student_attended_institution_to" name="attended_institution_to" placeholder="Enter Date..." />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+              </div>
+            </div>
+          </div>
+          <div class='col-sm-4'>
+            <h2>Degree Awarded </h2>
+            <div class=" form-group">
+              <input type="text" class="form-control" id="student_degree_awarded" name="degree_awarded" placeholder="Enter Degree Awarded...">
+            </div>
+          </div>
+          <div class='col-sm-4'>
+            <h2>Grade/Marks </h2>
+            <div class=" form-group">
+              <input type="text" class="form-control" id="student_grade" name="grade" placeholder="Enter Grade/Marks...">
+            </div>
+          </div>
+          <div class='col-sm-4'>
+            <h2>Degree Awarded On</h2>
+            <div class="form-group">
+              <div class="input-group date student_datepicker"  data-date-format="dd-mm-yyyy">
+                <input type="text"  class="form-control input-sm" id="student_degree_awarded_on" name="degree_awarded_on" placeholder="Enter Date..." />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+              </div>
+            </div>
+          </div>
+          <div class="x_content">
+            <h2>Institution Address Details </h2>
+            <div class='col-sm-8'>
+              <h2>Address <span class='text-danger'>*</span></h2>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="student_institution_address" name="address" required='required' placeholder="Enter Address">
+              </div>
+            </div>
+            <div class='col-sm-4'>
+              <h2>City/Town <span class='text-danger'>*</span></h2>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="student_institution_city" name="city" required='required' placeholder="Enter City/Town">
+              </div>
+            </div>
+            <div class='col-sm-4'>
+              <h2>Country <span class='text-danger'>*</span></h2>
+              <div class=" form-group">
+                <select id="institution_country" name ="country" class="select2_group form-control"  requried></select>
+              </div>
+            </div>
+            <div class='col-sm-4'>
+              <h2>Province/State</h2>
+              <div class=" form-group">
+                <select id="institution_state" name ="state" class=" select2_group form-control" required ></select>
+              </div>
+            </div>
+            <div class='col-sm-4'>
+              <h2>Postal/Zip Code</h2>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="student_institution_postal" name="postal"  placeholder="Enter Postal/Zip Code">
+              </div>
+            </div>
+          </div>
+          <div class='col-sm-12 text-right'>
+            <div class=" form-group">
+              <div class="input-group-btn">
+                <button class="btn btn-round btn-info btn-add" type="button"><span class="glyphicon glyphicon-save">Save</span></button>
+                <button class="btn btn-round btn-danger remove" type="button"><span class="glyphicon glyphicon-remove">Cancel</span> </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="input-group control-group before-add-more">
+      <div  class="input-group-btn">
+        <button class="btn btn-round btn-info add-more" type="button "><i class="glyphicon glyphicon-plus"></i> Add Attended Institution</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Education Summary End -->
+
+  <!-- Additional Qualifications Start -->
+  <div class="row" id="step-3">
+    <div class="x_panel rounded" style="border: 0">
+      <h3> Additonal Qualifications </h3>
+      <form class="form-label-left input_mask">
+        <div class="form-group row">
+          <div class="col-md-3 col-sm-3">
+            <h2>I have GRE exam score</h2>
+            <label class="el-switch el-switch-green">
+              <input type="checkbox" name="switch" class="grecheckbox" id="grecheckbox" >
+              <span class="el-switch-style"></span>
+            </label>
+          </div>
+          <div id="gre_checkbox" style="display:none">
+            <div class='col-sm-3'>
+              <label>GRE Exam Date</label>
+              <div class="form-group">
+                <div class="input-group date student_datepicker"  data-date-format="dd-mm-yyyy">
+                  <input type="text" id="gre_exam_date" name="gre_exam_date" class="form-control input-sm"  />
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Verbal Score</label>
+              <div class=" form-group">
+                <input type="text" class="form-control"  id="gre_verbal_score" name="gre_verbal_score">
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Quantitative Score</label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="gre_quantitative_score" name="gre_quantitative_score" >
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Writing Score </label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="gre_writing_score" name="gre_writing_score">
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Total Score</label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="gre_total_score" name="gre_total_score" >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row ">
+          <div class="col-md-3 col-sm-3">
+            <h2>I have GMAT exam score</h2>
+            <label class="el-switch el-switch-green">
+              <input type="checkbox" name="switch" id="gmatcheckbox" unchecked>
+              <span class="el-switch-style"></span>
+            </label>
+          </div>
+
+          <div id="gmat_checkbox" style="display:none">
+            <div class='col-sm-3'>
+              <label>GMAT Exam Date</label>
+              <div class="form-group">
+                <div class="input-group date student_datepicker"  data-date-format="dd-mm-yyyy">
+                  <input type="text"  class="form-control input-sm" id="gmat_exam_date" name="gmat_exam_date" />
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Verbal Score</label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="gmat_verbal_score" name="gmat_verbal_score >
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Quantitative Score</label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="gmat_quantitative_score" name="gmat_quantitative_score" >
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Writing Score </label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="gmat_writing_score" name="gmat_writing_score">
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Total Score</label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="gmat_total_score" name="gmat_total_score">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row ">
+          <div class="col-md-3 col-sm-3">
+            <h2>I have IELTS exam score</h2>
+            <label class="el-switch el-switch-green">
+              <input type="checkbox" name="switch" id="ieltscheckbox" >
+              <span class="el-switch-style"></span>
+            </label>
+          </div>
+          <div id="ietls_checkbox" style="display:none">
+            <div class='col-sm-3'>
+              <label>IELTS Exam Date</label>
+              <div class="form-group">
+                <div class="input-group date student_datepicker"  data-date-format="dd-mm-yyyy">
+                  <input type="text"  class="form-control input-sm" id="ielts_exam_date" name="ielts_exam_date"  />
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Listening Score</label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="ielts_listening_score" name="ielts_listening_score">
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Reading Score</label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="ielts_reading_score" name="ielts_reading_score" >
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Writing Score </label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="ielts_writing_score" name="ielts_writing_score">
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Speaking Score </label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="ielts_speaking_score" name="ielts_speaking_score">
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Total Score</label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="ielts_total_score" name="ielts_total_score" >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row ">
+          <div class="col-md-3 col-sm-3">
+            <h2>I have TOFEL exam score</h2>
+            <label class="el-switch el-switch-green">
+              <input type="checkbox" name="switch" id="tofelcheckbox">
+              <span class="el-switch-style"></span>
+            </label>
+          </div>
+          <div id="tofel_checkbox" style="display:none">
+            <div class='col-sm-3'>
+              <label>TOFEL Exam Date</label>
+              <div class="form-group">
+                <div class="input-group date student_datepicker"  data-date-format="dd-mm-yyyy">
+                  <input type="text"  class="form-control input-sm" id="tofel_exam_date" name="tofel_exam_date" />
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Listening Score</label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="tofel_listening_score" name="tofel_listening_score">
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Reading Score</label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="tofel_reading_score" name="tofel_reading_score" >
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Writing Score </label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="tofel_writing_score" name="tofel_writing_score" >
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Speaking Score </label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="tofel_speaking_score" name="tofel_speaking_score">
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Total Score</label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="tofel_total_score" name="tofel_total_score" >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row ">
+          <div class="col-md-3 col-sm-3">
+            <h2>I have PTE exam score</h2>
+            <label class="el-switch el-switch-green">
+              <input type="checkbox" name="switch" id="ptecheckbox">
+              <span class="el-switch-style"></span>
+            </label>
+          </div>
+          <div id="pte_checkbox" style="display:none">
+            <div class='col-sm-3'>
+              <label>PTE Exam Date</label>
+              <div class="form-group">
+                <div class="input-group date student_datepicker"  data-date-format="dd-mm-yyyy">
+                  <input type="text"  class="form-control input-sm" id="pte_exam_date" name="pte_exam_date"  />
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Listening Score</label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="pte_listening_score" name="pte_listening_score">
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Reading Score</label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="pte_reading_score" name="pte_reading_score" >
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Writing Score </label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="pte_writing_score" name="pte_writing_score">
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Speaking Score </label>
+              <div class=" form-group">
+                <input type="text" class="form-control" id="pte_speaking_score" name="pte_speaking_score">
+              </div>
+            </div>
+            <div class='col-sm-2'>
+              <label>Total Score</label>
+              <div class=" form-group">
+                <input type="text" class="form-control"  id="pte_total_score" name="pte_total_score" >
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Additional Qualifications End -->
+
+  <!-- BackGround Information Start -->
+  <div class="row" id="step-4">
+    <div class="x_panel rounded" style="border: 0">
+      <h3> Background Information </h3>
+      <form class="form-label-left input_mask">
+        <div class="form-group row">
+          <div class="col-md-6 col-sm-3">
+            <h2>Is there any Gap between Educations?</h2>
+            <label class="el-switch el-switch-green">
+              <input type="checkbox" name="switch" id="gapcheckbox" >
+              <span class="el-switch-style"></span>
+            </label>
+          </div>
+          <div id="gap_checkbox" style="display:none">
+            <div class='col-sm-12'>
+              <label>Reason for gap <span class="text-danger">(mandatory)</span></label>
+              <div class="form-group ">
+                <input type="text"  class="form-control " id="gap_reason" name="gap_reason"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row ">
+          <div class="col-md-6 col-sm-3">
+            <h2>Have you visited to any other Consultant?</h2>
+            <label class="el-switch el-switch-green">
+              <input type="checkbox" name="switch" id="otherconsultantcheckbox" unchecked>
+              <span class="el-switch-style"></span>
+            </label>
+          </div>
+
+          <div id="otherconsultant_checkbox" style="display:none">
+            <div class='col-sm-12'>
+              <label>Consultant Name</label>
+              <div class="form-group ">
+                <input type="text"  class="form-control " id="consultant_name" name="consultant_name" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row ">
+          <div class="col-md-6 col-sm-3">
+            <h2>Have you any country refusal?</h2>
+            <label class="el-switch el-switch-green">
+              <input type="checkbox" name="switch" id="refusalcheckbox" unchecked>
+              <span class="el-switch-style"></span>
+            </label>
+          </div>
+
+          <div id="refusal_checkbox" style="display:none">
+            <div class='col-sm-12'>
+              <label>Which Country</label>
+              <div class="form-group ">
+                <select id="country4" name="country_refusal" class="form-control" required>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row ">
+          <div class="col-md-6 col-sm-3">
+            <h2>Have you any work experience?</h2>
+            <label class="el-switch el-switch-green">
+              <input type="checkbox" name="switch" id="workexperiencecheckbox" unchecked>
+              <span class="el-switch-style"></span>
+            </label>
+          </div>
+
+          <div id="workexperience_checkbox" style="display:none">
+            <div class='col-sm-12'>
+              <label>Job Description</label>
+              <div class="form-group ">
+                <input type="text"  class="form-control " id="job_description" name="job_description" />
+              </div>
+            </div>
+            <div class='col-sm-4'>
+              <label>From:</label>
+              <div class="form-group ">
+                <div class="input-group date student_datepicker"  data-date-format="dd-mm-yyyy">
+                  <input type="text"  class="form-control input-sm" id="job_from" name="job_from"  />
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+              </div>
+            </div>
+            <div class='col-sm-4'>
+              <label>To:</label>
+              <div class="form-group ">
+                <div class="input-group date student_datepicker"  data-date-format="dd-mm-yyyy">
+                  <input type="text"  class="form-control input-sm" id="job_to" name="job_to" />
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+              </div>
+            </div>
+            <div class='col-sm-4'>
+              <label>Mode of Salary(Cash/Bank Account)</label>
+              <div class="form-group ">
+                <input type="text"  class="form-control " id="mode_salary" name="mode_salary"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row ">
+          <div class="col-md-6 col-sm-3">
+            <h2>Have you any dependent?</h2>
+            <label class="el-switch el-switch-green">
+              <input type="checkbox" name="switch" id="dependentcheckbox" unchecked>
+              <span class="el-switch-style"></span>
+            </label>
+          </div>
+
+          <div id="dependent_checkbox" style="display:none">
+            <div class='col-sm-12'>
+              <label>No. of dependents accompanying applicant:</label>
+              <div class="form-group ">
+                <input type="text"  class="form-control " id="dependents" name="dependents"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-9 col-sm-9">
+            <h2>Please provide more details (if any)</h2>
+            <textarea class="form-control" id="more_details" name="more_details"></textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- BackGround Information End -->
+  <!-- Upload Documents Start -->
+  <div class="row" id="step-5">
+    <div class="col-md-12 col-sm-12 ">
+    <div class="x_panel" style="border: 0">
+      <div class="x_title">
+      <h3> Upload Documents </h3>
+      <div class="x_content">
+      <form action="file-upload/" class="dropzone"></form>
+      <br />
+      <br />
+      <br />
+      <br />
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+
+  <!-- Upload Document Ends -->
+
+</div>
+
+</div>
+
+
+
+
+      <!-- ********************************************************************  -->
+</div>
+    </div>
+        <!-- /page content -->
+{% endblock %}
+{% block js %}
+    <script src="{% static "vendors/select2/js/select2.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "vendors/parsley/js/parsley.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "viec/js/countries.js" %}" type="text/javascript"></script>
+    <script src="{% static "vendors/nprogress/js/smartWizard.min.js" %}" type="text/javascript"></script>
+      <script language="javascript">
+      populateCountries("country", "state"); // first parameter is id of country drop-down and second parameter is id of state drop-down
+      populateCountries("country2");
+      populateCountries("country3");
+      populateCountries("country4");
+      populateCountries("institution_country", "institution_state");
+      </script>
+
+      <script language="javascript">
+
+
+  $(function() {
+
+
+    $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
+             //alert("You are on step "+stepNumber+" now");
+             if(stepPosition === 'first'){
+                 $("#prev-btn").addClass('disabled');
+             }else if(stepPosition === 'final'){
+                 $("#next-btn").addClass('disabled');
+             }else{
+                 $("#prev-btn").removeClass('disabled');
+                 $("#next-btn").removeClass('disabled');
+             }
+          });
+
+          // Toolbar extra buttons
+          var btnFinish = $('<button></button>').text('Finish')
+                                           .addClass('btn btn-info')
+                                           .on('click', function(){ alert('Finish Clicked'); });
+          var btnCancel = $('<button></button>').text('Cancel')
+                                           .addClass('btn btn-danger')
+                                           .on('click', function(){ $('#smartwizard').smartWizard("reset"); });
+
+          // Please note enabling option "showStepURLhash" will make navigation conflict for multiple wizard in a page.
+          // so that option is disabling => showStepURLhash: false
+
+          // Smart Wizard 1
+         $('#smartwizard').smartWizard({
+                  selected: 0,
+                  theme: 'arrows',
+                  transitionEffect:'fade',
+                  autoAdustHeight: true,
+                  showStepURLhash: false,
+                  toolbarSettings: {toolbarPosition: 'bottom',
+                                    toolbarExtraButtons: [btnFinish,
+                                                          btnCancel
+                                                          ]
+                                   }
+
+          });
+
+
+
+
+    clickcounter = 0;
+    $(".add-more").click(function(){
+
+      if(clickcounter == 0)
+      {
+        var html = $(".copy").html();
+        $(".before-add-more").before(html);
+        clickcounter++;
+      }
+      else {
+        alert("You Should Cancel/Save the current expanded institution first");
+      }
+    });
+
+    $("body").on("click",".remove",function(){
+      $(this).parents(".control-group").remove();
+      clickcounter = 0;
+    });
+    var datePickerOptions = {
+      showOn: "both",
+      autoclose: true,
+      todayHighlight: true,
+      endDate: '+0d'
+    }
+    $('body').on('focus',".student_datepicker", function(){
+        $(this).datepicker(datePickerOptions);
+
+    });
+
+    $('body').on("click",".grecheckbox", function(){
+      var checkBox = document.getElementById("grecheckbox");
+      var text = document.getElementById("gre_checkbox");
+      if(checkBox.checked == true)
+      {
+        text.style.display = "block";
+      }
+      else
+      {
+        text.style.display = "none";
+        $("#gre_checkbox").find('input').val('');
+      }
+    });
+    $('body').on("click","#gmatcheckbox", function(){
+      var checkBox = document.getElementById("gmatcheckbox");
+      var text = document.getElementById("gmat_checkbox");
+      if(checkBox.checked == true)
+      {
+        text.style.display = "block";
+      }
+      else
+      {
+        text.style.display = "none";
+        $("#gmat_checkbox").find('input').val('');
+      }
+    });
+    $('body').on("click","#ieltscheckbox", function(){
+
+      var checkBox = document.getElementById("ieltscheckbox");
+      var text = document.getElementById("ietls_checkbox");
+      if(checkBox.checked == true)
+      {
+        text.style.display = "block";
+      }
+      else
+      {
+        text.style.display = "none";
+        $("#ietls_checkbox").find('input').val('');
+      }
+    });
+    $('body').on("click","#tofelcheckbox", function(){
+
+      var checkBox = document.getElementById("tofelcheckbox");
+      var text = document.getElementById("tofel_checkbox");
+      if(checkBox.checked == true)
+      {
+        text.style.display = "block";
+      }
+      else
+      {
+        text.style.display = "none";
+        $("#tofel_checkbox").find('input').val('');
+      }
+    });
+    $('body').on("click","#ptecheckbox", function(){
+
+      var checkBox = document.getElementById("ptecheckbox");
+      var text = document.getElementById("pte_checkbox");
+      if(checkBox.checked == true)
+      {
+        text.style.display = "block";
+      }
+      else
+      {
+        text.style.display = "none";
+        $("#pte_checkbox").find('input').val('');
+      }
+    });
+
+    $('body').on("click","#gapcheckbox", function(){
+
+      var checkBox = document.getElementById("gapcheckbox");
+      var text = document.getElementById("gap_checkbox");
+      if(checkBox.checked == true)
+      {
+        text.style.display = "block";
+      }
+      else
+      {
+        text.style.display = "none";
+        $("#gap_checkbox").find('input').val('');
+      }
+    });
+    $('body').on("click","#otherconsultantcheckbox", function(){
+
+      var checkBox = document.getElementById("otherconsultantcheckbox");
+      var text = document.getElementById("otherconsultant_checkbox");
+      if(checkBox.checked == true)
+      {
+        text.style.display = "block";
+      }
+      else
+      {
+        text.style.display = "none";
+        $("#otherconsultant_checkbox").find('input').val('');
+      }
+    });
+    $('body').on("click","#refusalcheckbox", function(){
+
+      var checkBox = document.getElementById("refusalcheckbox");
+      var text = document.getElementById("refusal_checkbox");
+      if(checkBox.checked == true)
+      {
+        text.style.display = "block";
+      }
+      else
+      {
+        text.style.display = "none";
+        $("#country4").val('-1');
+      }
+    });
+    $('body').on("click","#workexperiencecheckbox", function(){
+
+      var checkBox = document.getElementById("workexperiencecheckbox");
+      var text = document.getElementById("workexperience_checkbox");
+      if(checkBox.checked == true)
+      {
+        text.style.display = "block";
+      }
+      else
+      {
+        text.style.display = "none";
+      $("#workexperience_checkbox").find('input').val('');
+      }
+    });
+    $('body').on("click","#dependentcheckbox", function(){
+
+        var checkBox = document.getElementById("dependentcheckbox");
+        var text = document.getElementById("dependent_checkbox");
+        if(checkBox.checked == true)
+        {
+          text.style.display = "block";
+        }
+        else
+        {
+          text.style.display = "none";
+        $("#dependent_checkbox").find('input').val('');
+        }
+      });
+
+});
+
+</script>
+{% endblock %}
