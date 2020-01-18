@@ -1,4 +1,4 @@
-from tokenize import Token
+from rest_framework.authtoken.models import Token
 
 from django.contrib.auth.models import User
 from rest_framework import viewsets, status, permissions
@@ -25,6 +25,7 @@ class UserLogin(ObtainAuthToken):
         if serializer.is_valid():
             user = serializer.validated_data['user']
             user_serializer = UserSerializer(user)
+            Token.objects.all()
             token, created = Token.objects.get_or_create(user=user)
             return Response({
                 'status': 'success',

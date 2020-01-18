@@ -57,6 +57,8 @@
 <script src="{% static "vendors/jquery/js/jquery.serializejson.min.js" %}" type="text/javascript"></script>
 <!-- NProgress -->
 <script src="{% static "vendors/nprogress/js/nprogress.js" %}"></script>
+<script src="{% static "vendors/notify/notify.min.js" %}" type="text/javascript"></script>
+
 
 <!-- Custom Theme Scripts -->
 <script src="{% static "viec/js/custom.min.js" %}" type="text/javascript"></script>
@@ -72,14 +74,20 @@
             return $.trim(this.value).length > 0
         }).serializeJSON();
         $.ajax({
-            url: "/api/login/",
+            url: "/auth/login/",
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json',
             data: JSON.stringify(data)
         }).done(function (response, status) {
             NProgress.done();
-            location.href = '/api/dashboard/';
+            $.notify(response['msg'], {
+            position: "top center",
+            autoHideDelay: 10000,
+            clickToHide: true,
+            className: 'success'
+        });
+            {#location.href = '/api/dashboard/';#}
         }).fail(function (jqXHR, status, error) {
             $.notify(JSON.parse(jqXHR.responseText)['msg'], {
                 position: "top center",

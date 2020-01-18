@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
+from index.urls import index_url_pattern
 from index.views import IndexViewSet
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', IndexViewSet.as_view({'get': 'get'})),
+    url(r'^auth/', include(index_url_pattern)),
 ]
