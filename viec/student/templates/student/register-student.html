@@ -3,10 +3,13 @@
 {% block css %}
     <link rel="stylesheet" type="text/css" href="{% static 'vendors/select2/css/select2.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'vendors/nprogress/css/smart_wizard.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'vendors/nprogress/css/smart_wizard_theme_arrows.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendors/nprogress/css/smart_wizard_theme_arrows.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'vendors/checkbox/css/checkbox.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'vendors/dropzone/css/dropzone.min.css' %}">
-
+    <style>
+      .student_datepicker > span:hover{cursor: pointer;}
+      .hide{display:none!important}
+    </style>
 {% endblock %}
 {% block pageTitle %}
     <h3 class="titleTop">Register Student</h3>
@@ -394,7 +397,7 @@
             <div class='col-sm-2'>
               <label>Verbal Score</label>
               <div class=" form-group">
-                <input type="text" class="form-control" id="gmat_verbal_score" name="gmat_verbal_score >
+                <input type="text" class="form-control"  id="gmat_verbal_score" name="gmat_verbal_score">
               </div>
             </div>
             <div class='col-sm-2'>
@@ -412,7 +415,7 @@
             <div class='col-sm-2'>
               <label>Total Score</label>
               <div class=" form-group">
-                <input type="text" class="form-control" id="gmat_total_score" name="gmat_total_score">
+                <input type="text" class="form-control" id="gmat_total_score" name="gmat_total_score" >
               </div>
             </div>
           </div>
@@ -701,6 +704,7 @@
     </div>
   </div>
   <!-- BackGround Information End -->
+
   <!-- Upload Documents Start -->
   <div class="row" id="step-5">
     <div class="col-md-12 col-sm-12 ">
@@ -718,7 +722,6 @@
   </div>
 </div>
 </div>
-
   <!-- Upload Document Ends -->
 
 </div>
@@ -749,10 +752,10 @@
       <script language="javascript">
 
 
-  $(function() {
+      $(function() {
 
 
-    $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
+      $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
              //alert("You are on step "+stepNumber+" now");
              if(stepPosition === 'first'){
                  $("#prev-btn").addClass('disabled');
@@ -789,22 +792,18 @@
                                    }
 
           });
+          clickcounter = 0;
+          $(".add-more").click(function(){
 
-
-
-
-    clickcounter = 0;
-    $(".add-more").click(function(){
-
-      if(clickcounter == 0)
-      {
-        var html = $(".copy").html();
-        $(".before-add-more").before(html);
-        clickcounter++;
-      }
-      else {
-        alert("You Should Cancel/Save the current expanded institution first");
-      }
+          if(clickcounter == 0)
+          {
+            var html = $(".copy").html();
+            $(".before-add-more").before(html);
+            clickcounter++;
+          }
+          else {
+          alert("You Should Cancel/Save the current expanded institution first");
+            }
     });
 
     $("body").on("click",".remove",function(){
