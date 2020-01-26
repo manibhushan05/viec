@@ -5,8 +5,6 @@ from rest_framework.validators import UniqueValidator
 
 from utils.helper import get_or_none
 from employee.models import Profile
-from utils.serializers import CitySerializer
-from utils.models import City
 from utils.validators import validate_mobile_number, validate_pin, validate_username
 
 
@@ -68,7 +66,7 @@ class ProfileSerializer(serializers.Serializer):
 
     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(),
                                               validators=[UniqueValidator(queryset=Profile.objects.all())])
-    city = serializers.PrimaryKeyRelatedField(allow_null=True, queryset=City.objects.all(), required=False)
+    city = serializers.CharField(allow_null=True, min_length=3, max_length=100, required=False)
 
     def validate_phone(self, value):
         if not validate_mobile_number(value) and value:
@@ -92,7 +90,6 @@ class ProfileSerializer(serializers.Serializer):
 
     def to_representation(self, instance):
         self.fields['user'] = UserSerializer(read_only=True)
-        self.fields['city'] = CitySerializer(read_only=True)
         return super().to_representation(instance=instance)
 
     def create(self, validated_data):
@@ -271,4 +268,3 @@ class VerifyOTPSerializer(serializers.Serializer):
 
     def update(self, instance, validated_data):
         pass
-

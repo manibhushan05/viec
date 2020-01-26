@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework',
     'django_filters',
+    'index',
     'lead',
     'student',
     'utils',
@@ -127,7 +128,8 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
     ),
-    'PAGE_SIZE': 25
+    'DEFAULT_PAGINATION_CLASS': 'utils.pagination.StandardResultsSetPagination',
+    'PAGE_SIZE': 10
 }
 
 # Internationalization
