@@ -1,0 +1,104 @@
+{% extends "student/base.html" %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'vendors/select2/css/select2.min.css' %}">
+{% endblock %}
+{% block pageTitle %}
+    <h3 class="titleTop">Update Driver</h3>
+{% endblock %}
+{% block content %}
+    <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_right text-right">
+                <h3> Student Application Form </h3>
+               </div>
+            </div>
+             <div class="clearfix"></div>
+<!-- ****************************************************************  -->
+            <div class="row">
+              <div class="x_panel">
+                <div class="x_content">
+                  <br />
+                  <form class="form-label-left input_mask" id="leadform" data-parsely-validate="" >
+                    <div class="form-group row">
+                      <label class="col-form-label col-md-3 col-sm-3 "> StudentID <span class="text-danger">*</span>
+                      </label>
+                      <div class="col-md-9 col-sm-9 ">
+                        <select id="student_id" name="student_id" class="form-control" data-parsley-required="true" data-parsley-errors-messages-disabled>
+                          <option value="">--Select StudentID--</option>
+                          </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-form-label col-md-3 col-sm-3 "> Institution <span class="text-danger">*</span>
+                      </label>
+                      <div class="col-md-9 col-sm-9 ">
+                        <input type="text" class="form-control has-feedback-left" id="application_institution" name="institution" data-parsley-required="true" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-trigger="keyup" data-parsley-errors-messages-disabled placeholder="Enter Institution">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-form-label col-md-3 col-sm-3 "> Program <span class="text-danger">*</span>
+                      </label>
+                      <div class="col-md-9 col-sm-9 ">
+                        <input type="text" class="form-control has-feedback-left" id="application_program" name="program" data-parsley-required="true" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-trigger="keyup" data-parsley-errors-messages-disabled placeholder="Enter Program">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-form-label col-md-3 col-sm-3 "> Country <span class="text-danger">*</span>
+                      </label>
+                      <div class="col-md-9 col-sm-9 ">
+                        <select id="country" name ="country" class="form-control"></select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-form-label col-md-3 col-sm-3 "> Apply Date <span class="text-danger">*</span>
+                      </label>
+                      <div class="col-md-9 col-sm-9 date">
+                        <input type="text"  class="form-control" id="student_dob" name="dob"  placeholder="Enter Date..." />
+                        <!-- <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span> -->
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-form-label col-md-3 col-sm-3 "> Start Date <span class="text-danger">*</span>
+                      </label>
+                      <div class="col-md-9 col-sm-9 date ">
+                        <input type="text"  class="form-control" id="student_dob" name="dob"  placeholder="Enter Date..." />
+                        <!-- <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span> -->
+                      </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                    <div class="form-group row">
+                      <div class="col-md-9 col-sm-9  offset-md-3">
+                        <button type="button" class="btn btn-primary">Cancel</button>
+             <button class="btn btn-primary" type="reset">Reset</button>
+                        <button type="submit" id="submit" name="submit" class="btn btn-success" value="submit">Submit</button>
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+              </div>
+             </div>
+<!-- ********************************************************************  -->
+          </div>
+        </div>
+        <!-- /page content -->
+{% endblock %}
+{% block js %}
+    <script src="{% static "vendors/select2/js/select2.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "vendors/parsley/js/parsley.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "viec/js/countries.js" %}" type="text/javascript"></script>
+{% endblock %}
