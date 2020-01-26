@@ -21,7 +21,7 @@
               <div class="x_panel">
                 <div class="x_content">
                   <br />
-                  <form class="form-label-left input_mask" id="leadform" data-parsely-validate="" >
+                  <form class="form-label-left input_mask" id="lead_form" data-parsely-validate="" >
                     <div class="col-md-4 col-sm-12  form-group has-feedback">
                     <input type="text" class="form-control has-feedback-left" id="lead_first_name" name="first_name" data-parsley-required="true" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-trigger="keyup" data-parsley-errors-messages-disabled placeholder="First Name*">
                       <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
@@ -46,11 +46,11 @@
                     </div>
 
                     <div class="col-md-4 col-sm-12  form-group ">
-                    <select id="country" name ="country" class="form-control"></select>
+                    <select id="country" name ="country" class="form-control select2"></select>
                     </div>
 
                     <div class="col-md-4 col-sm-12  form-group ">
-                      <select id="state" name ="state" class="form-control"></select>
+                      <select id="state" name ="state" class="form-control select2"></select>
                     </div>
 
                     <div class="col-md-4 col-sm-12  form-group ">
@@ -79,7 +79,7 @@
                       <label class="col-form-label col-md-3 col-sm-3 "> Visa Type <span class="text-danger">*</span>
                       </label>
                       <div class="col-md-9 col-sm-9 ">
-                        <select id="visa_type" name="visa_type" class="form-control" data-parsley-required="true" data-parsley-errors-messages-disabled>
+                        <select id="visa_type" name="visa_type" class="form-control select2" data-parsley-required="true" >
                           <option value="">--Select Visa--</option>
                           <option value="study">Study Visa</option>
                           <option value="tourist">Tourist Visa</option>
@@ -91,7 +91,7 @@
                       <label class="col-form-label col-md-3 col-sm-3 "> Country Interested <span class="text-danger">*</span>
                       </label>
                       <div class="col-md-9 col-sm-9 ">
-                        <select id="country2" name="country_interested" class="form-control" data-parsley-required="true" data-parsley-errors-messages-disabled>
+                        <select id="country2" name="country_interested" class="form-control select2" data-parsley-required="true" >
                         </select>
                       </div>
                     </div>
@@ -105,7 +105,7 @@
                       <label class="col-form-label col-md-3 col-sm-3 "> Type of Lead <span class="text-danger">*</span>
                       </label>
                       <div class="col-md-9 col-sm-9 ">
-                        <select id="lead_type" name="lead_type" class="form-control" data-parsley-required="true" data-parsley-errors-messages-disabled>
+                        <select id="lead_type" name="lead_type" class="form-control select2" data-parsley-required="true" >
                           <option value="">--Select Lead--</option>
                           <option value="cold">Cold</option>
                           <option value="warm">Warm</option>
@@ -117,7 +117,7 @@
                       <label class="col-form-label col-md-3 col-sm-3 "> Color of Lead <span class="text-danger">*</span>
                       </label>
                       <div class="col-md-9 col-sm-9 ">
-                        <select id="lead_color" name="lead_color" class="form-control" data-parsley-required="true" data-parsley-errors-messages-disabled>
+                        <select id="lead_color" name="lead_color" class="form-control select2" data-parsley-required="true" >
                           <option value="">--Select Color--.</option>
                           <option value="cold">Green</option>
                           <option value="warm">Yellow</option>
@@ -128,7 +128,7 @@
                     <div class="form-group row">
                       <label class="col-form-label col-md-3 col-sm-3 "> Month Intake </label>
                       <div class="col-md-9 col-sm-9 ">
-                        <select id='lead_intake' name="lead_intake" class="form-control">
+                        <select id='lead_intake' name="lead_intake" class="form-control select2">
                           <option value="">--Select Month--</option>
                           <option value='1'>Janaury</option>
                           <option value='2'>February</option>
@@ -149,7 +149,7 @@
                       <label class="col-form-label col-md-3 col-sm-3 "> Recommended By <span class="text-danger">*</span>
                       </label>
                       <div class="col-md-9 col-sm-9 ">
-                        <select id="recommended_by" name="recommended_by" class="form-control" data-parsley-required="true" data-parsley-errors-messages-disabled>
+                        <select id="recommended_by" name="recommended_by" class="form-control select2" data-parsley-required="true" >
                           <option value="">--Select--</option>
                           <option value="friend">Friend</option>
                           <option value="student">Previous Student</option>
@@ -163,8 +163,7 @@
                     <div class="form-group row">
                       <label class="col-form-label col-md-3 col-sm-3 ">Remarks(20 chars min, 150 max)</label>
                       <div class="col-md-9 col-sm-9 ">
-                        <textarea id="remarks"   class="form-control" name="remarks" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="150" data-parsley-errors-messages-disabled data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
-                          data-parsley-validation-threshold="10"></textarea>
+                        <textarea id="remarks"   class="form-control" name="remarks"  data-parsley-maxlength="150" ></textarea>
                       </div>
                     </div>
 
@@ -189,6 +188,58 @@
 {% endblock %}
 {% block js %}
     <script src="{% static "vendors/select2/js/select2.min.js" %}" type="text/javascript"></script>
-    <script src="{% static "vendors/parsley/js/parsley.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "vendors/jquery/js/parsley.min.js" %}" type="text/javascript"></script>
+    <!-- serialize-->
+    <script src="{% static "vendors/jquery/js/jquery.serializejson.min.js" %}" type="text/javascript"></script>
+    <!-- NProgress -->
+    <script src="{% static "vendors/nprogress/js/nprogress.js" %}"></script>
+    <script src="{% static "vendors/notify/notify.min.js" %}" type="text/javascript"></script>
     <script src="{% static "viec/js/countries.js" %}" type="text/javascript"></script>
+    <script language="javascript">
+      populateCountries("country", "state"); // first parameter is id of country drop-down and second parameter is id of state drop-down
+      populateCountries("country2");
+      $(".select2").select2().change(function() { $(this).parsley().validate();
+       });
+      </script>
+    <script>
+    $('#submit').click(function (e) {
+        let lead_form = $('#lead_form');
+        if (!lead_form.parsley().isValid()) {
+            return true;
+        }
+        alert(lead_form);
+        e.preventDefault();
+        NProgress.start();
+        let data = lead_form.find(':input').filter(function () {
+            return $.trim(this.value).length > 0
+        }).serializeJSON();
+        alert(JSON.stringify(data));
+        $.ajax({
+            url: "/auth/login/",
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(data)
+        }).done(function (response, status) {
+            NProgress.done();
+            $.notify(response['msg'], {
+            position: "top center",
+            autoHideDelay: 10000,
+            clickToHide: true,
+            className: 'success'
+        });
+            {#location.href = '/api/dashboard/';#}
+        }).fail(function (jqXHR, status, error) {
+            $.notify(JSON.parse(jqXHR.responseText)['msg'], {
+                position: "top center",
+                autoHideDelay: 1000,
+                clickToHide: true,
+                className: 'error'
+            });
+            NProgress.done();
+        });
+        return false;
+    });
+</script>
+
 {% endblock %}
